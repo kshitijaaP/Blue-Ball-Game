@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Ball Game</title>
+    <style>
+
+        .btn-circle.btn-sm {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            font-size: 8px;
+            text-align: center;
+        }
+       
+      
+    </style>
+</head>
+<body>
+    <div id="display">
+        <h5>Enter Number Of Balls:</h5>
+        <div id="inputF">
+        <input type="text" name="ballNumber" id="noOfBalls" placeholder="Enter number of balls">
+        <button  onclick="submitBtn()" >Submit</button>
+         </div>
+        
+        <p id="invalidInput"></p> 
+    </div>
+  
+
+<script>
+ 
+    function submitBtn()
+    {
+    
+        var balls;
+       balls= document.getElementById("noOfBalls").value
+       let text1;
+      if (isNaN(balls) || balls <= 24 || balls >= 51) {
+        text1 = "Input not valid";
+        document.getElementById("invalidInput").innerHTML=text1;
+      } else {
+        var arrBalls=[];
+        arrBalls.length=balls;
+        let text=""
+        let blueNumber=generateRandom(arrBalls.length);     
+        for(let i=1;i<=arrBalls.length;i++)    
+        {
+                 text += '<button id="click'+i+ '" class="btn-circle btn-sm"  onclick="game('+i+','+ blueNumber+')" >'+ i + '</button> '     
+                                
+           }    
+            document.getElementById("display").innerHTML= text;      
+        }       
+       
+    }
+    
+    function generateRandom(max) {
+let min=0;
+
+let difference = max - min;
+
+
+let rand = Math.random();
+
+
+rand = Math.floor( rand * difference);
+
+
+rand = rand + min;
+
+return rand;
+}
+let count=0;
+    function game(i,blueNumber)
+    {  count=count+1;
+        
+        let text="";
+      if (i==blueNumber){
+            document.getElementById('click'+i).id = 'click'+i;
+         document.getElementById('click'+i).style.backgroundColor = "blue";  
+         alert("Congratulationsss..!! You Won..!!")      
+         window.location.reload()
+        }
+        else if(i<blueNumber)
+        { 
+             document.getElementById('click'+i).id = 'click'+i;
+         document.getElementById('click'+i).style.backgroundColor = "red";   
+         document.getElementById('click'+i).disabled = true;
+        }
+        else
+        {document.getElementById('click'+i).id = 'click'+i;
+        document.getElementById('click'+i).style.backgroundColor  = "green";    
+        document.getElementById('click'+i).disabled = true;  
+        }
+        if(count==3)
+        { 
+          
+            alert("Sorry you could not find the ball. Correct ball was " +blueNumber)
+            window.location.reload()
+        }
+      
+        // if(count>3)
+        // { 
+          
+        //     alert("Sorry you could not find the ball. Correct ball was " +blueNumber)
+        //     window.location.reload()
+        // }
+       
+    }
+   
+    </script>
+</body>
+
+</html>

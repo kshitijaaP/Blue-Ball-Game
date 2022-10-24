@@ -1,0 +1,15 @@
+project 1: Blue ball game
+
+take input from user for number of balls user wants to play with
+add validation for number of balls. minimum balls - 25, max - 50
+once user clicks submit create balls that was entered by user
+eg. if user enter 40 balls and clicks submit create 40 balls
+
+there will be one blue ball within those 40 balls (generate random number from 1 - 40 as user has selected 40 balls)
+
+eg. Say the blue ball is 30 now when user clicks on a ball which is less than 30 ball color should change to RED and if user clicks ball greater than 30 then ball color should change to GREEN and when user clicks 30 ball should turn to BLUE
+
+number of attempts user gets is 3 or 5 (based on your choice)
+
+after the attempts get over and user didnt find the right ball then end the game and show user text saying "Sorry you could not find the ball. Correct ball was 30"
+and if user finds the right  ball then show congratulation message to user
